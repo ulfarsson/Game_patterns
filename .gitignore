@@ -1,0 +1,99 @@
+# macOS metadata
+.DS_Store
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Project folders kept out of this repo
+/Old versions/
+/References/
+/Summary (Notes by Joshua)/
+/Report from Aðferðaviðbj*ður/
+/Report from Game Theory/
+/Report from Game Theory Course/
+
+# Research code kept out of this repo unless it lives in code-permuta
+*.py
+*.c
+*.cc
+*.cpp
+*.cxx
+*.h
+*.hh
+*.hpp
+*.ipp
+*.tpp
+
+!/code-permuta/*.py
+!/code-permuta/*.c
+!/code-permuta/*.cc
+!/code-permuta/*.cpp
+!/code-permuta/*.cxx
+!/code-permuta/*.h
+!/code-permuta/*.hh
+!/code-permuta/*.hpp
+!/code-permuta/*.ipp
+!/code-permuta/*.tpp
+!/code-permuta/**/*.py
+!/code-permuta/**/*.c
+!/code-permuta/**/*.cc
+!/code-permuta/**/*.cpp
+!/code-permuta/**/*.cxx
+!/code-permuta/**/*.h
+!/code-permuta/**/*.hh
+!/code-permuta/**/*.hpp
+!/code-permuta/**/*.ipp
+!/code-permuta/**/*.tpp
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+*.dvi
+*.lof
+*.lot
+
+# Generated PDFs from local LaTeX builds
+/ItsAllFunAndGamesUntilMonotonicity.pdf
+/ItsAllFunAndGamesUntilMonotonicity_appendices.tex
+/ItsAllFunAndGamesUntilMonotonicity_appendices.pdf
+/PatternGame.*
+/Pattern Game.*
+/sub.PNG
+
+# Common compiled C/C++ artifacts
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+*.exe
+/analyze_k5_oneblock_hypergraph
+/classify_k5_actual_creator_core_sets
+/classify_k5_actual_min_creator_types
+/classify_k5_actual_tail_core_types
+/classify_k5_creator_core_atoms
+/classify_k5_directed_openings
+/pap_search_fast
+/pap_singleton_sym
+/search_k5_actual_markedtail_covers
+/search_k5_markedtail_covers
+/test_k5_all_n8_templates_directed_exactness
+/test_k5_all_n_templates_directed_exactness
+/test_k5_descending_exactness
+/test_k5_directed_reply_exactness
+/test_k5_monotone_template_directed_exactness
+/verify_k5_creator_case
