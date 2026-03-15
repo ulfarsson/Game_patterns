@@ -114,7 +114,8 @@ fully scalable theorem.
 
 Several exact results in the paper are computer-assisted.  Those computations are all exhaustive
 and, with the exception of the separate $N_6$ threshold computation, are reproduced by the scripts
-collected in the directory \texttt{code-permuta/}; see Section~\ref{sec:repro}.
+collected in the public repository~\cite{game-patterns-repo}, specifically in the directory
+\texttt{code-permuta/}; see Section~\ref{sec:repro}.
 
 \section{Basic PAP analysis}
 
@@ -197,7 +198,8 @@ P-position.  The cases $231$, $213$, $312$, and $321$ follow by symmetry.
 
 \begin{remark}
 The exact computer-assisted results in Sections~2,~6, and~7 are reproduced by the focused scripts
-in \texttt{code-permuta/}, except for the separate $N_6$ threshold computation; see
+in the public repository~\cite{game-patterns-repo}, namely \texttt{code-permuta/}, except for the
+separate $N_6$ threshold computation; see
 Section~\ref{sec:repro}.
 \end{remark}
 
@@ -1275,7 +1277,8 @@ disjoint from~$F$.
 \begin{proof}
 Since $F$ is reverse-closed, we may identify it with the set of non-monotone reverse pairs that it
 contains.  The statement is then a finite exact computation.  The script
-\path{code-permuta/k4_reverse_reply_permuta.py} enumerates all pairs $(F,p)$ satisfying the hypotheses; there are
+\path{code-permuta/k4_reverse_reply_permuta.py} in the public repository~\cite{game-patterns-repo}
+enumerates all pairs $(F,p)$ satisfying the hypotheses; there are
 $1156$ ($297$ if we reduce them by symmetries) such pairs.  For each of them, it finds a triple $(\beta,i,\varepsilon)$ whose stable
 non-monotone shadow has the required properties.  See Section~\ref{sec:repro}.
 \end{proof}
@@ -1369,7 +1372,8 @@ and $3142$ interchanged.
 
  Since $F$ is reverse-closed, we identify it with the set of non-monotone reverse pairs that it
  contains.  The remaining assertions are finite exact computations.  The script
- \path{code-permuta/k4_reverse_reply_permuta.py} enumerates all $6!\cdot 6 \cdot 2$ one-entry inflation families,
+ \path{code-permuta/k4_reverse_reply_permuta.py} in the public repository~\cite{game-patterns-repo}
+ enumerates all $6!\cdot 6 \cdot 2$ one-entry inflation families,
  computes their stable shadows $\Sigma(\beta,i,\varepsilon)$, and records the distinct external
  reverse-pair supports for those containing $2413$ but not $3142$.  It finds $138$ such supports,
  and hence also $138$ supports in $\mathcal{E}_{3142}$ by the equality above.
@@ -1792,9 +1796,10 @@ naturally with the viewpoint developed here.
 \section{Computational reproducibility}\label{sec:repro}
 
 The computer-assisted statements in the main body are all exact and exhaustive.  The scripts in
-\texttt{code-permuta/} are limited to the computations needed for the main paper, with the sole
-exception that the exact value $N_6=25$ was obtained separately and is not part of the routine
-Python bundle.  The runs cited here were checked with Python 3.11 and
+\texttt{code-permuta/} are available in the public repository
+\url{https://github.com/ulfarsson/Game_patterns}.  They are limited to the computations needed for
+the main paper, with the sole exception that the exact value $N_6=25$ was obtained separately and
+is not part of the routine Python bundle.  The runs cited here were checked with Python 3.11 and
 \texttt{permuta}~\cite{permuta-repo}.  After installing \texttt{permuta}, the commands below can
 be run directly from the repository root.
 
