@@ -61,23 +61,27 @@ def run_case(k: int, max_n: int, max_seconds_per_count: float) -> None:
             cutoff = (n, elapsed)
             break
 
+    def monotone_count(n: int) -> int:
+        # id_n and id_n^r coincide for n <= 1.
+        return 1 if n <= 1 else 2
+
     threshold = None
     if cutoff is None:
-        for n in range(k, len(counts)):
-            if counts[n] == 2 and all(c == 2 for c in counts[n:]):
+        for n in range(1, len(counts)):
+            if all(counts[m] == monotone_count(m) for m in range(n, len(counts))):
                 threshold = n
                 break
 
     if threshold is not None:
-        print(f"first_n_with_only_monotones={threshold}")
+        print(f"threshold={threshold}")
     elif cutoff is not None:
         n, elapsed = cutoff
         print(
-            "first_n_with_only_monotones="
+            "threshold="
             f"not_found_before_runtime_guard_at_n={n}_elapsed={elapsed:.3f}s"
         )
     else:
-        print(f"first_n_with_only_monotones=not_found_up_to_{max_n}")
+        print(f"threshold=not_found_up_to_{max_n}")
 
 
 def main() -> int:

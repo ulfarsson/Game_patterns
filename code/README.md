@@ -25,9 +25,10 @@ Toolchain used for the runs cited in the paper:
   - the hard-pair computation.
 
 - `bk_thresholds.cpp`
-  Reproduces the exact threshold data `N_3=2`, `N_4=7`, `N_5=14`, and `N_6=25`
+  Reproduces the exact threshold data `N_3=1`, `N_4=7`, `N_5=14`, and `N_6=25`
   from Section 7 by generating the classes `Av_n(B_k)` incrementally until only
-  the two monotone permutations remain.
+  the monotone permutations remain (counted as one permutation at length `1`,
+  where increasing and decreasing coincide).
 
 - `k5_fullspace_data.cpp`
   Reproduces the exact `k=5` full-space computations cited in the general-`k`

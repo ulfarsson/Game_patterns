@@ -98,11 +98,11 @@ strategy works at $n=4$, fails at $n=5,6,7,8,9$, and then works again for all $n
 failure at small $n$ splits into two different phenomena: at $n=6$ the starting position itself is
 an N-position, whereas at $n=5,7,8,9$ the starting position is still a P-position but the
 reverse move need not be the correct winning reply.  The $k=4$ theorem for $n \geq 10$ is proved by
-combining the structural $B_k$ analysis with a finite exact verification.
+combining the structural $B_k$ analysis with a finite verification.
 
 The paper therefore has two intertwined themes.  Sections~3--5 and~7 develop the structural theory
 of the sets $B_k$: a recursive characterization, minimality, upper and lower bounds for the
-monotone-forcing threshold, and exact threshold data for small~$k$.  Sections~2 and~6 are the
+monotone-forcing threshold, and threshold data for small~$k$.  Sections~2 and~6 are the
 game-theoretic side: Section~2 analyzes the small starting positions, while Section~6 uses the
 structure of $B_k$ to prove the large-$n$ reverse-reply theorem for $k=4$.  The role of $B_k$ in
 the game is precisely that it supplies both the monotone endgame and the near-monotone witness
@@ -112,7 +112,7 @@ For general $k$, the paper goes only as far as a conjectural extension of this p
 discussion beyond $k=4$ is intended to isolate the next structural obstruction, not to claim a
 fully scalable theorem.
 
-Several exact results in the paper are computer-assisted.  Those computations are all exhaustive
+Several results in the paper are computer-assisted.  Those computations are all exhaustive
 and, with the exception of the separate $N_6$ threshold computation, are reproduced by the scripts
 collected in the public repository~\cite{game-patterns-repo}, specifically in the directory
 \texttt{code-permuta/}; see Section~\ref{sec:repro}.
@@ -197,23 +197,22 @@ Player~I's move.  The same reverse-reply idea already settles the case $k=3$.
 \end{proof}
 
 \begin{remark}
-  The exact computer-assisted results in Sections~2,~6, and~7 are reproduced by the focused scripts
+  The computer-assisted results in Sections~2,~6, and~7 are reproduced by the focused scripts
   in the public repository~\cite{game-patterns-repo}, namely \texttt{code-permuta/}, except for the
   separate $N_6$ threshold computation; see
   Section~\ref{sec:repro}.
 \end{remark}
 
-In the next few pages, the Sprague--Grundy language is used mainly for two purposes: to record exact
+In the next few pages, the Sprague--Grundy language is used mainly for two purposes: to record
 small-$n$ data, and to separate the statement ``$\Sym_n$ is a P-position'' from the stronger
-statement that the literal move-by-move reverse rule is a winning strategy.  This distinction is one
-of the main game-theoretic themes of the paper.  The later large-$n$ $k=4$ theorem is proved by the
+statement that the literal move-by-move reverse rule is a winning strategy. The later $k=4$ theorem for $n \geq 10$ is proved by the
 reverse-reply criterion from Corollary~\ref{cor:conditional-reverse}, which establishes the stronger
-strategy statement, not by a direct Sprague--Grundy computation.
+strategy statement.
 
 A natural question is whether the same reverse strategy continues to win for general~$k$.
-Table~\ref{tab:sgvalues} records exact single-length Sprague--Grundy values for several small
+Table~\ref{tab:sgvalues} records Sprague--Grundy values for several small
 cases.  The entries for $k=1,2,3$ follow from the results above; the entries for $k=4$ were
-computed exactly by exhaustive search; see Section~\ref{sec:repro}.
+computed by exhaustive search; see Section~\ref{sec:repro}.
 
 \begin{table}[ht]
   \centering
@@ -233,7 +232,7 @@ computed exactly by exhaustive search; see Section~\ref{sec:repro}.
     10  & 1               & 0               & 0               & 0               \\
     \bottomrule
   \end{tabular}
-  \caption{Exact SG-values for PAP on $\Sym_n$ with a single allowed pattern length.}
+  \caption{Sprague--Grundy values for PAP on $\Sym_n$ up to $n=10$ and $k=4$.}
   \label{tab:sgvalues}
 \end{table}
 
@@ -242,12 +241,12 @@ The picture becomes more nuanced already at $k=4$.  The exceptional value
   \sg(\Sym_6,4)=2
 \]
 shows that the naive guess that $\Sym_n$ should always be a P-position for fixed $k$ is false.
-A further exact computation explains this value: among the $24$ followers $\Av_6(p)$, twelve have
+A further computation explains this value: among the $24$ followers $\Av_6(p)$, twelve have
 Sprague--Grundy value $0$, two have value $1$, and the remaining ten have value $3$; hence
 \[
   \sg(\Sym_6,4)=\mex\{0,1,3\}=2.
 \]
-Moreover, even when the starting position is a P-position, the forced move-by-move reverse strategy
+Moreover, even when the starting position is a P-position, the move-by-move reverse strategy
 need not be a winning strategy.
 
 \begin{proposition}\label{prop:k4-reverse-data}
@@ -260,19 +259,13 @@ need not be a winning strategy.
   $4 \leq n \leq 9$; see Section~\ref{sec:repro}.
 \end{proof}
 
-Thus the data separate two small-$n$ obstructions.  At $n=6$, the starting position itself is an
-N-position.  At $n=5,7,8,9$, we have
-\[
-  \sg(\Sym_n,4)=0,
-\]
-but the vanishing Sprague--Grundy value does not by itself force the move-by-move reverse rule to
-be winning.  Example~\ref{ex:n9-reverse-fails} is the key illustration of that distinction.
+Example~\ref{ex:n9-reverse-fails} illustrates how the reverse strategy can fail.
 
 \begin{example}\label{ex:n9-reverse-fails}
   At $n=9$ the reverse reply can already fail on the very next move, even though it remains legal.
   Starting from $\Sym_9$, suppose Player~I chooses $1234$ and Player~II replies with the reverse
   $4321$.  Then Player~I can choose $1324$.  The reverse response $4231$ is still legal, since
-  an exact count gives $334$ avoiders before $4231$ is forbidden and $2$ afterwards,
+  a count gives $334$ avoiders before $4231$ is forbidden and $2$ afterwards,
   yet it lands in an N-position:
   \[
     \sg(\{1234,4321,1324,4231\})=2.
@@ -280,16 +273,12 @@ be winning.  Example~\ref{ex:n9-reverse-fails} is the key illustration of that d
   In fact, the winning replies after $1324$ are $3412$, $3421$, and $4312$.
 \end{example}
 
-This suggests a structural explanation for the small-$n$ failures when $k=4$.  There are really two
-different obstructions.  At $n=6$, the starting position itself is an N-position.  At
-$n=5,7,8,9$, the starting position is still a P-position, but the literal reverse reply need not
-preserve that property: the reverse move can remain legal while landing in an N-position, as in
-Example~\ref{ex:n9-reverse-fails}.  Section~6 shows that this instability disappears once the
-witness-family analysis stabilizes, namely from $n \geq 9$ for non-monotone replies and from
-$n \geq 10$ once the monotone endgame is also available.
+Section~6 shows that what happened in Example~\ref{ex:n9-reverse-fails} disappears once
+certain witness-families stabilize (from $n \geq 9$ for non-monotone replies) and once the monotone endgame is available (from
+$n \geq 10$).
 
 Exact computation also reveals a rigid pattern in the lengths of optimal play when $k=4$.
-Figure~\ref{fig:k4-optimal-lengths} shows the exact distributions of complete play lengths under
+Figure~\ref{fig:k4-optimal-lengths} shows the distributions of complete play lengths under
 optimal play from $\Sym_n$ for $5 \leq n \leq 10$, with bar heights on a logarithmic scale.  The
 supports of these distributions are particularly simple: at $n=5$ they are the even lengths
 $10,12,\ldots,24$; at $n=6$ they are the odd lengths $7,9,\ldots,23$; at $n=7,8,9$ they are the
@@ -302,9 +291,9 @@ optimal game lengths.
   \begin{tikzpicture}[x=0.17cm,y=0.13cm]
     \tikzstyle{optbar}=[fill=blue!55, draw=blue!70!black, line width=0.2pt]
 
-    \node[rotate=90, font=\scriptsize] at (-5,18) {$\log_{10}(\#\text{ optimal lines})$};
+    %\node[rotate=90, font=\scriptsize] at (-5,18) {$\log_{10}(\#\text{ optimal lines})$};
 
-    \begin{scope}[shift={(0,46)}]
+    \begin{scope}[shift={(0,50)}]
       \draw[->] (0,0) -- (24.8,0);
       \draw[->] (0,0) -- (0,18.8);
       \foreach \y in {0,6,12,18} {\draw[gray!30] (0,\y) -- (24.4,\y);}
@@ -315,7 +304,7 @@ optimal game lengths.
       \node[font=\small] at (12,19.8) {$n=5$};
     \end{scope}
 
-    \begin{scope}[shift={(30,46)}]
+    \begin{scope}[shift={(30,50)}]
       \draw[->] (0,0) -- (24.8,0);
       \draw[->] (0,0) -- (0,18.8);
       \foreach \y in {0,6,12,18} {\draw[gray!30] (0,\y) -- (24.4,\y);}
@@ -325,7 +314,7 @@ optimal game lengths.
       \node[font=\small] at (12,19.8) {$n=6$};
     \end{scope}
 
-    \begin{scope}[shift={(0,23)}]
+    \begin{scope}[shift={(0,25)}]
       \draw[->] (0,0) -- (24.8,0);
       \draw[->] (0,0) -- (0,18.8);
       \foreach \y in {0,6,12,18} {\draw[gray!30] (0,\y) -- (24.4,\y);}
@@ -336,7 +325,7 @@ optimal game lengths.
       \node[font=\small] at (12,19.8) {$n=7$};
     \end{scope}
 
-    \begin{scope}[shift={(30,23)}]
+    \begin{scope}[shift={(30,25)}]
       \draw[->] (0,0) -- (24.8,0);
       \draw[->] (0,0) -- (0,18.8);
       \foreach \y in {0,6,12,18} {\draw[gray!30] (0,\y) -- (24.4,\y);}
@@ -347,7 +336,7 @@ optimal game lengths.
     \end{scope}
 
     \begin{scope}[shift={(0,0)}]
-      \draw[->] (0,0) -- (24.8,0) node[below right,font=\scriptsize] {length};
+      \draw[->] (0,0) -- (24.8,0); % node[below right,font=\scriptsize] {length};
       \draw[->] (0,0) -- (0,18.8);
       \foreach \y in {0,6,12,18} {\draw[gray!30] (0,\y) -- (24.4,\y);}
       \foreach \y in {6,12,18} {\node[left,font=\scriptsize] at (0,\y) {\y};}
@@ -358,7 +347,7 @@ optimal game lengths.
     \end{scope}
 
     \begin{scope}[shift={(30,0)}]
-      \draw[->] (0,0) -- (24.8,0) node[below right,font=\scriptsize] {length};
+      \draw[->] (0,0) -- (24.8,0); % node[below right,font=\scriptsize] {length};
       \draw[->] (0,0) -- (0,18.8);
       \foreach \y in {0,6,12,18} {\draw[gray!30] (0,\y) -- (24.4,\y);}
       \foreach \x in {4,8,12,16,20,24} {\draw (\x,0) -- (\x,-0.35) node[below,font=\scriptsize] {\x};}
@@ -368,7 +357,7 @@ optimal game lengths.
       \node[font=\small] at (12,19.8) {$n=10$};
     \end{scope}
   \end{tikzpicture}
-  \caption{Exact distributions of complete play lengths under optimal play for PAP on $\Sym_n$ with
+  \caption{Distributions of complete play lengths under optimal play for PAP on $\Sym_n$ with
     pattern length $4$, for $5 \leq n \leq 10$.  Bar heights are $\log_{10}$ of the number of optimal
     play lines of the given length.}
   \label{fig:k4-optimal-lengths}
@@ -453,7 +442,7 @@ endgame and then formulate the reverse-reply criterion that we will actually use
 \section{Definitions and the sets \texorpdfstring{$B_k$}{Bk}}
 
 The next three sections supply the structural input for the game result, Theorem~\ref{thm:k4}, proved in Section~6.
-Section~3 introduces the sets $B_k$ and their recursive description, Section~4 proves their
+This section introduces the sets $B_k$ and their recursive description, Section~4 proves their
 minimality via witness families, and Section~5 develops the monotone-forcing bounds on the
 threshold~$N_k$.
 
@@ -584,28 +573,33 @@ With the following definition, we can give a recursive characterisation of the s
   $(i,j)$, meaning that exactly $i$ points of $M$ lie to the left of $x$ and exactly $j$ lie below
   $x$.
 
-  Now delete one point of $M$ instead of deleting $x$.  The remaining $(k-1)$-pattern is obtained by
-  inserting $x$ into an increasing $(k-2)$-pattern.  A direct inspection of the definitions of
-  $p_{k-1}, q_{k-1}, r_{k-1}, s_{k-1}$ and their complements shows that inserting one point into an
-  increasing $(k-2)$-pattern yields an element of $B_{k-1}$ exactly in the six cells
+  Since deleting $x$ from $u$ leaves $\id_{k-2}$, the forward direction applied at level $k-1$
+  shows that $u$ must be one of
   \[
-    (0,1),\ (1,0),\ (0,k-2),\ (k-2,0),\ (k-3,k-2),\ (k-2,k-3),
+    r_{k-1},\ q_{k-1}^c,\ s_{k-1},\ p_{k-1}.
   \]
-  producing respectively
+  Equivalently, inserting one point into an increasing $(k-2)$-pattern yields
   \[
-    r_{k-1},\ r_{k-1},\ q_{k-1}^c,\ s_{k-1},\ p_{k-1},\ p_{k-1}.
+    r_{k-1}\text{ in cells }(0,1),(1,0),
+  \]
+  \[
+    q_{k-1}^c\text{ in cell }(0,k-2),
+  \]
+  \[
+    s_{k-1}\text{ in cell }(k-2,0),
+  \]
+  \[
+    p_{k-1}\text{ in cells }(k-3,k-2),(k-2,k-3).
   \]
 
-  If the deleted point of $M$ lies to the left of $x$, then the first coordinate drops by $1$;
-  otherwise it stays the same.  Likewise, deleting a point below $x$ lowers the second coordinate by
-  $1$, while deleting a point above $x$ leaves it unchanged.  Hence the cells that can arise from the
-  $k-1$ deletions of points of $M$ are among
+  Now delete one point of $M$ instead of deleting $x$.  Relative to the remaining increasing
+  $(k-2)$-pattern, the point $x$ moves to one of
   \[
     (i,j),\ (i-1,j),\ (i,j-1),\ (i-1,j-1),
   \]
-  and every realized cell must produce the same pattern $u$.
-
-  This is possible only in the following four situations:
+  according to whether the deleted point lies right or left of $x$, and above or below it.  Since
+  every such deletion gives the same pattern $u$, every realized cell must be one of the cells listed
+  above for $u$.  This forces
   \[
     u=r_{k-1}\text{ and }(i,j)\in\{(0,1),(1,0)\},
   \]
@@ -618,15 +612,8 @@ With the following definition, we can give a recursive characterisation of the s
   \[
     u=p_{k-1}\text{ and }(i,j)\in\{(k-2,k-1),(k-1,k-2)\}.
   \]
-  Indeed, any other position would realize either a neighboring cell outside the six-cell list above,
-  or two neighboring cells corresponding to different members of $B_{k-1}$.
-
-  Therefore $x$ lies in one of the six cells
-  \[
-    (0,1),\ (1,0),\ (0,k-1),\ (k-1,0),\ (k-2,k-1),\ (k-1,k-2)
-  \]
-  relative to the increasing pattern $M$.  These are exactly the insertions producing
-  $r_k, r_k, q_k^c, s_k, p_k, p_k$, so $\pi \in B_k$.
+  These are exactly the insertions producing $r_k$, $q_k^c$, $s_k$, and $p_k$, respectively, so
+  $\pi \in B_k$.
 \end{proof}
 
 \begin{definition}
@@ -718,7 +705,7 @@ We start with a lemma:
   then the resulting $k$-pattern lies in $B_k$.
 \end{lemma}
 
-Figure~\ref{fig:dangerous-cells-k5} shows these cells in the first nontrivial case $k=5$.
+Figure~\ref{fig:dangerous-cells-k5} shows these cells in the case $k=5$.
 
 \begin{figure}[ht]
   \centering
@@ -748,13 +735,13 @@ Figure~\ref{fig:dangerous-cells-k5} shows these cells in the first nontrivial ca
   \end{tikzpicture}
   \caption{The cell decomposition determined by an increasing pattern $M=\id_4$ when $k=5$.
     The cell $(i,j)$ records that $i$ points of $M$ lie to the left and $j$ lie below.
-    The shaded cells are exactly the six cells from Lemma~\ref{lem:dangerous-cells}.}
+    The shaded cells are the six cells from Lemma~\ref{lem:dangerous-cells}.}
   \label{fig:dangerous-cells-k5}
 \end{figure}
 
 \begin{proof}
   Inserting a point into either of the cells $(0,1)$ and $(1,0)$ both produce the pattern $r_k$. Inserting into cell $(0,k{-}1)$
-  produces $q_k^c$. Inserting into cell $(k{-}1,0)$ produces $s_k$, and inserting into either cells $(k{-}2,k{-}1)$ or $(k{-}1,k{-}2)$
+  produces $q_k^c$. Inserting into cell $(k{-}1,0)$ produces $s_k$, and inserting into either $(k{-}2,k{-}1)$ or $(k{-}1,k{-}2)$
   produces $p_k$.  All four distinct patterns belong to~$B_k$.
 \end{proof}
 
@@ -814,6 +801,7 @@ longest decreasing subsequence of~$\pi$, respectively.
         \node[red!75!black, above left] at (1.5,6.5) {\small $x$};
         \node[above] at (4.5,9.35) {\small $j-i \geq 4$};
         \node[below] at (4.5,-0.45) {\small $x$ lies in cell $(0,4)$};
+        \node[below] at (4.5,-1.55) {\small relative to $M'$};
       \end{scope}
 
       % Case 2
@@ -832,6 +820,7 @@ longest decreasing subsequence of~$\pi$, respectively.
         \node[red!75!black, above left] at (2.5,4.5) {\small $x$};
         \node[above] at (4.5,9.35) {\small $r-j \geq 3$};
         \node[below] at (4.5,-0.45) {\small $x$ lies in cell $(0,1)$};
+        \node[below] at (4.5,-1.55) {\small relative to $M'$};
       \end{scope}
 
       % Case 3
@@ -850,6 +839,7 @@ longest decreasing subsequence of~$\pi$, respectively.
         \node[red!75!black, above right] at (4.5,5.5) {\small $x$};
         \node[above] at (4.5,9.35) {\small $i \geq 3$};
         \node[below] at (4.5,-0.45) {\small $x$ lies in cell $(3,4)$};
+        \node[below] at (4.5,-1.55) {\small relative to $M'$};
       \end{scope}
     \end{tikzpicture}
     \caption{The three cases in the proof of Theorem~\ref{thm:quadratic-bound}. The chosen
@@ -881,7 +871,7 @@ longest decreasing subsequence of~$\pi$, respectively.
   \[
     \mathrm{LIS}(\pi)\leq 3k-8,\qquad \mathrm{LDS}(\pi)\leq 3k-8.
   \]
-  By the Erd\H{o}s--Szekeres theorem, every permutation of length $(3k-8)^2+1$ has either an
+  By the Erd\H{o}s--Szekeres theorem, every permutation of length $(3k-8)^2+1$, or longer, has either an
   increasing or a decreasing subsequence of length $3k-7$.  Hence no non-monotone permutation of that
   length can avoid $B_k$.
 \end{proof}
@@ -975,7 +965,7 @@ We now handle the non-$B_4$ patterns.
     \Sh_4(E_n(p,q)) \subseteq \{p, q, 1234, 4321\}.
   \]
 \end{definition}
-The cutoff $n \geq 7$ is the natural stable range for these families: in the constructions below,
+The cutoff $n \geq 7$ is explained by the constructions below, because it ensures
 the long monotone block then has length at least $4$, so every $4$-pattern is forced either to lie
 entirely in that block or to use the exceptional entries together with the monotone block.
 
@@ -1058,7 +1048,7 @@ entirely in that block or to use the exceptional entries together with the monot
   both initial entries together with two entries from the tail gives $2143$.  Thus the only
   non-monotone patterns are again the target and its stated companion.
 
-  The two remaining displayed symmetry classes are checked in exactly the same way: once the
+  The two remaining displayed symmetry classes are checked in the same way: once the
   exceptional entries are fixed, the long tail contributes only monotone order.  The other
   $20$ ordered pairs $(p,q)$ are obtained from these four representatives by reverse, complement, and
   inverse symmetries.
@@ -1151,7 +1141,7 @@ entirely in that block or to use the exceptional entries together with the monot
   Then $F$ is reverse-closed, contains no monotone pattern, and omits the reverse pair
   $1243/3421$ from $B_4$. The family $E_n(1324,1243)$ above shows that $1324$ is legal from $\Av_n(F)$,
   so if Player I chooses $1324$ we can use the family $E_n(4231,3421) = E_n(1324,1243)^r$ (which lies in $\Av_n(F\cup\{1324\})$)
-  to see that the reverse reply $4231$ is legal.  This is exactly the first branch of the non-$B_4$ argument used later in
+  to see that the reverse reply $4231$ is legal.  This is the first branch of the non-$B_4$ argument used later in
   Lemma~\ref{lem:reverse-reply-legality}.
 \end{example}
 
@@ -1172,37 +1162,52 @@ introduce one-entry inflation families.
 \end{definition}
 
 \begin{example}
-  Take $\beta=241356$, $i=5$, and $\varepsilon=+$.  Then
+  Take $\beta=123465$, $i=5$, and $\varepsilon=-$.  Then
   \[
-    I_4(\beta,5,+)=241356789
+    I_1(\beta,5,-)=123465
   \]
   has non-monotone shadow
   \[
-    \Sh_4(I_4(\beta,5,+))\setminus\{1234,4321\}=\{1324,2134,2314,2413,3124\}.
+    \Sh_4(I_1(\beta,5,-))\setminus\{1234,4321\}=\{1243\},
   \]
-  If instead $\beta'=314256$ with the same $i$ and $\varepsilon$, then
+  whereas the stable non-monotone shadow is
   \[
-    I_4(\beta',5,+)=314256789
+    \Sigma(\beta,5,-)=\{1243,1432\}.
   \]
-  has non-monotone shadow
+  The extra pattern $1432$ already appears at block size $2$, since
   \[
-    \Sh_4(I_4(\beta',5,+))\setminus\{1234,4321\}=\{1324,2134,2314,3124,3142\};
+    I_2(\beta,5,-)=1234765
   \]
-  see Figure~\ref{fig:stable-shadow-examples}.
-  Thus the two families differ only in whether they contain $2413$ or $3142$; after deleting those
-  patterns and recording the remaining non-monotone patterns only up to
-  reverse-pairs, both yield
+  and
   \[
-    \{1324/4231,\; 2134/4312,\; 2314/4132,\; 3124/4213\}.
+    \Sh_4(I_2(\beta,5,-))\setminus\{1234,4321\}=\{1243,1432\}.
   \]
-  This viewpoint becomes
-  important later in Definition~\ref{def:external-supports} and
-  Proposition~\ref{prop:hard-pair-families}, because for a reverse-closed forbidden set the relevant
-  question is which non-hard reverse pairs remain outside the distinguished hard pair
-  $\{2413,3142\}$.
-
-  The next lemma explains why the same shadow persists for all $t \geq 4$
+  So in this family the ordinary non-monotone shadow depends on the block size, while
+  $\Sigma(\beta,5,-)$ records the eventual value.
 \end{example}
+
+For later use with the hard pair, Figure~\ref{fig:stable-shadow-examples} shows the two
+block-size-$4$ families $I_4(241356,5,+)$ and $I_4(314256,5,+)$. Their stable non-monotone shadows
+are
+\[
+  \Sigma(241356,5,+)=\{1324,2134,2314,2413,3124\},
+\]
+\[
+  \Sigma(314256,5,+)=\{1324,2134,2314,3124,3142\}.
+\]
+Thus the two stable shadows differ only in whether they contain $2413$ or $3142$.  Removing that
+hard pair and then recording the remaining non-monotone patterns only up to reverse-pairs gives the
+same set in both cases:
+\[
+  \{1324/4231,\; 2134/4312,\; 2314/4132,\; 3124/4213\}.
+\]
+This viewpoint becomes important later in Definition~\ref{def:external-supports} and
+Proposition~\ref{prop:hard-pair-families}, because for a reverse-closed forbidden set the relevant
+question is which non-hard reverse pairs remain outside the distinguished hard pair
+$\{2413,3142\}$.
+
+The next lemma explains why once the inflated block has length at least $4$, the non-monotone
+shadow has stabilized to $\Sigma(\beta,i,\varepsilon)$.
 
 \begin{figure}[ht]
   \centering
@@ -1239,7 +1244,7 @@ introduce one-entry inflation families.
       \node[blue!70!black] at (2.35,4.95) {\small $3142$};
     \end{scope}
   \end{tikzpicture}
-  \caption{Two one-entry inflation examples.  The shaded square
+  \caption{Two block-size-$4$ one-entry inflation examples.  The shaded square
     marks the inflated block, and the blue points show the distinguished hard pattern: $2413$ on the
     left and $3142$ on the right.}
   \label{fig:stable-shadow-examples}
@@ -1276,11 +1281,12 @@ introduce one-entry inflation families.
 
 \begin{proof}
   Since $F$ is reverse-closed, we may identify it with the set of non-monotone reverse pairs that it
-  contains.  The statement is then a finite exact computation.  The script
+  contains.  The statement is then a finite  computation.  The script
   \path{code-permuta/k4_reverse_reply_permuta.py} in the public repository~\cite{game-patterns-repo}
   enumerates all pairs $(F,p)$ satisfying the hypotheses; there are
-  $1156$ ($297$ if we reduce them by symmetries) such pairs.  For each of them, it finds a triple $(\beta,i,\varepsilon)$ whose stable
-  non-monotone shadow has the required properties.  See Section~\ref{sec:repro}.
+  $1156$ ($297$ if we reduce them by symmetries) such pairs.  For each of them, it finds a triple $(\beta,i,\varepsilon)$,
+  with $\beta \in \Sym_6$, whose stable
+  non-monotone shadow has the required properties.  See Section~\ref{sec:repro} for details on reproducibility.
 \end{proof}
 
 \begin{lemma}\label{lem:reverse-reply-legality}
@@ -1386,9 +1392,9 @@ Finally, we handle the hard pair $\{2413,3142\}$.
 
 \begin{theorem}\label{thm:k4}
   For every $n \geq 10$, the move-by-move reverse strategy is a winning strategy for Player~II in PAP
-  on $\Sym_n$ with $k=4$.  Equivalently,
+  on $\Sym_n$ with $k=4$.  This implies,
   \[
-    \sg(\Sym_n,4)=0 \qquad (n \geq 10).
+    \sg(\Sym_n,4)=0 \qquad \text{for } n \geq 10.
   \]
 \end{theorem}
 
@@ -1451,7 +1457,7 @@ there remain
 non-$B_k$ reverse pairs that could potentially be hard.  For $k=4$ this number is $7$, and the
 explicit companion families reduce it all the way down to the single pair $\{2413,3142\}$.  For
 $k=5$ the corresponding number is already $55$.  The present computations show that the simplest
-one-companion construction works for $28$ of the $110$ non-$B_k$ patterns, but this still leaves
+one-companion construction works for $14$ of these, but this still leaves
 many unresolved cases, so one should not expect a single hard pair to remain.
 
 This suggests that an extension of the $k=4$ proof to $k=5$ should still be possible, but
@@ -1562,7 +1568,7 @@ $N_k \leq (3k-8)^2+1$.  We can improve this upper bound using more of the patter
 The bound above is still far from the largest avoiders found computationally.
 The next two constructions give quadratic lower bounds.
 \begin{definition}
-  For $k \geq 4$, let $E_k$ be the permutation obtained by concatenating an increasing block $A$ of
+  For $k \geq 4$, let $E_k$ be the \emph{staircase permutation} obtained by concatenating an increasing block $A$ of
   length $k-3$, then $k-2$ increasing blocks $C_1,\dots,C_{k-2}$ of length $k-2$ arranged so that
   every entry of $C_i$ is larger than every entry of $C_j$ whenever $i<j$, and finally another
   increasing block $B$ of length $k-3$.  Thus
@@ -1725,7 +1731,7 @@ We now have
 \[
   \max\{k^2-2k-1,\ 2(k-2)(k-3)+1\}\leq N_k\leq (2k-5)^2+1\qquad\text{for all }k\geq 4,
 \]
-while $N_3=2$.  In particular,
+while $N_3=1$.  In particular,
 \[
   7 \leq N_4 \leq 10,\qquad 14 \leq N_5 \leq 26,\qquad 25 \leq N_6 \leq 50.
 \]
@@ -1733,30 +1739,25 @@ while $N_3=2$.  In particular,
 \begin{proposition}\label{prop:exact-thresholds}
   We have
   \[
-    N_3=2,\qquad N_4=7,\qquad N_5=14,\qquad N_6=25.
+    N_3=1,\qquad N_4=7,\qquad N_5=14,\qquad N_6=25.
   \]
 \end{proposition}
 
 \begin{proof}
-  For $k=3$, we have $B_3=\{132,213,231,312\}$, so every permutation of length at least $2$ avoiding
-  $B_3$ is monotone, while $N_3>1$.
+  For $k=3$, we have $B_3=\{132,213,231,312\}$, so every permutation of length at least $1$ avoiding
+  $B_3$ is monotone, and $N_3=1$.
 
   For $k=4,5,6$, the lower bounds from Proposition~\ref{prop:staircase-lower-bound} and
   Proposition~\ref{prop:double-layered-lower-bound} already give
   \[
     N_4\geq 7,\qquad N_5\geq 14,\qquad N_6\geq 25.
   \]
-  The classes $\Av_n(B_k)$ were then enumerated exactly until the first length at which only the two
-  monotone permutations remain.  This happens at $n=7,14,25$ for $k=4,5,6$, respectively.
+  The classes $\Av_n(B_k)$ were then enumerated until the threshold value was reached.
+  For $k=4,5,6$, this happens at $n=7,14,25$, respectively.
 
-  Once this happens at some length $m \geq k$, it persists for all larger lengths.  Indeed, every
-  non-monotone permutation of length at least $m$ contains a non-monotone pattern of length $m$:
-  start with any non-monotone $3$-pattern and add arbitrary further entries.  So a longer avoider
-  would force a non-monotone avoider of length~$m$.
-
-  Thus the first lengths at which only the two monotone permutations remain are exactly
-  $N_4=7$, $N_5=14$, and $N_6=25$.  These computations are reproduced in
-  Section~\ref{sec:repro}; for $k=6$ they use the incremental fast avoider-generation methods of
+  Once this happens at some length $m \geq k$, it persists for all larger lengths.
+  These computations are reproduced in
+  Section~\ref{sec:repro}; except for $k=6$ which used the incremental fast avoider-generation methods of
   Kuszmaul~\cite{kuszmaul}.
 \end{proof}
 
@@ -1766,8 +1767,8 @@ The sets $B_k$ seem to be the right finite obstruction sets for single-length PA
 minimal by Theorem~\ref{thm:minimality}, eventually monotone forcing by
 Theorem~\ref{thm:quadratic-bound} and Corollary~\ref{cor:better-quadratic-bound}, and the thresholds for
 $k=3,4,5,6$, are
-$N_3=2$, $N_4=7$, $N_5=14$, and $N_6=25$.  For $k=3$, the reverse strategy is completely understood
-(Theorem~\ref{thm:k3}); for $k=4$, the reverse strategy is now settled as well, with exact
+$N_3=1$, $N_4=7$, $N_5=14$, and $N_6=25$.  For $k=3$, the reverse strategy is completely understood
+(Theorem~\ref{thm:k3}); for $k=4$, the reverse strategy is now settled as well, with
 exceptions at $n=5,6,7,8,9$ and a large-$n$ theorem proved via stable one-entry inflation
 families.  The staircase permutations $E_k$ from
 Proposition~\ref{prop:staircase-lower-bound} show that
@@ -1793,18 +1794,33 @@ two players are allowed to choose from different sets of patterns, or even from 
 pattern lengths.  These variants seem likely to require ideas beyond the present paper, but they fit
 naturally with the viewpoint developed here.
 
+\section*{Acknowledgements}
+
+We thank Jay Pantone for running Kuszmaul's code to obtain the value $N_6=25$.  We also thank
+Magn\'us M\'ar Halld\'orsson, Hjalti Magn\'usson, Joshua Sack, and Einar Steingr\'imsson for
+discussions during the early stages of this work.  We further thank Magn\'us M\'ar Halld\'orsson
+for helpful discussions relating to the computational testing of our conjectures.
+
+Large language models were used in this work, more precisely ChatGPT-5.4 and Claude Opus 4.6.
+They were used for finding examples, writing code, and shortening and tightening proofs,
+which in some cases led to better arguments.  On the whole, we can recommend the use of
+an AI partner in mathematics research, provided that one maintains tight control: these systems can
+disappear into rabbit holes, start expensive computations and then forget about them, and produce
+arguments that require careful untangling to eliminate circular reasoning. All errors are still
+the sole responsibility of the human author.
+
 \section{Computational reproducibility}\label{sec:repro}
 
 The computer-assisted statements in the main body are all exact and exhaustive.  The scripts in
 \texttt{code-permuta/} are available in the public repository
 \url{https://github.com/ulfarsson/Game_patterns}.  They are limited to the computations needed for
-the main paper, with the sole exception that the exact value $N_6=25$ was obtained separately and
+the main paper, with the sole exception that the value $N_6=25$ was obtained separately and
 is not part of the routine Python bundle.  The runs cited here were checked with Python 3.11 and
 \texttt{permuta}~\cite{permuta-repo}.  After installing \texttt{permuta}, the commands below can
 be run directly from the repository root.
 
 To reproduce the starting-position data from Section~2, including Table~\ref{tab:sgvalues},
-Proposition~\ref{prop:k4-reverse-data}, and the exact numbers in
+Proposition~\ref{prop:k4-reverse-data}, and the numbers in
 Example~\ref{ex:n9-reverse-fails}, together with the optimal-play length distributions shown in
 Figure~\ref{fig:k4-optimal-lengths}, run:
 \begin{verbatim}
@@ -1817,41 +1833,42 @@ python code-permuta/pap_starting_data_permuta.py \
 python code-permuta/pap_starting_data_permuta.py \
   query 9 4 1234,4321,1324,4231
 \end{verbatim}
-The two query commands produce the exact counts $334$ and $2$ from
+The two query commands produce the counts $334$ and $2$ from
 Example~\ref{ex:n9-reverse-fails} together with the
 winning replies in that state, printed in \texttt{permuta}'s native zero-based notation.  For each
-$n \in \{5,6,7,8,9,10\}$, the \texttt{optimal-dist} command prints the exact number of optimal play
+$n \in \{5,6,7,8,9,10\}$, the \texttt{optimal-dist} command prints the number of optimal play
 lines of each possible length from the starting position~$\Sym_n$.
 
-To reproduce the exact $k=4$ computations from Section~6 that are used directly in the proof,
-namely the exact residual $n=7$ support classification in
+To reproduce the $k=4$ computations from Section~6 that are used directly in the proof,
+namely the residual $n=7$ support classification in
 Proposition~\ref{prop:residual-nonhard-inflations} and the hard-pair computation in
 Proposition~\ref{prop:hard-pair-families}, run:
 \begin{verbatim}
 python code-permuta/k4_reverse_reply_permuta.py all
 \end{verbatim}
-This script prints the exact summary lines
+This script prints the summary lines
 \begin{verbatim}
 gap_cases ok checks=1156
 hard_pair ok supports=138 legal_states=543
 \end{verbatim}
 
-To reproduce the exact threshold data from Proposition~\ref{prop:exact-thresholds} up to $k=5$, run:
+To reproduce the threshold data from Proposition~\ref{prop:exact-thresholds} up to $k=5$, run:
 \begin{verbatim}
 python code-permuta/bk_thresholds_permuta.py 3 6
 python code-permuta/bk_thresholds_permuta.py 4 10
 python code-permuta/bk_thresholds_permuta.py 5 20
 \end{verbatim}
-These commands print the exact counts $|\Av_n(B_k)|$ and the first length at which only the two
-monotone permutations remain.  The exact value $N_6=25$ was obtained separately and is not part of
+These commands print the counts $|\Av_n(B_k)|$ and the first length at which only the two
+monotone permutations remain, equivalently the threshold value $N_k$; for $k=3$ this threshold is
+$1$ because $\id_1=\id_1^r$.  The value $N_6=25$ was obtained separately and is not part of
 the routine \texttt{permuta} bundle.
 
-To reproduce the exact $k=5$ full-space computations cited in the discussion after
+To reproduce the $k=5$ full-space computations cited in the discussion after
 Theorem~\ref{thm:k4} and in the conclusion, run:
 \begin{verbatim}
 python code-permuta/k5_fullspace_data_permuta.py all
 \end{verbatim}
-This prints the exact counts
+This prints the counts
 \begin{verbatim}
 one_companion_targets=28 total_nonB5_nonmonotone=110
 full_space_separable_pairs=59 total_nonmonotone_pairs=59
