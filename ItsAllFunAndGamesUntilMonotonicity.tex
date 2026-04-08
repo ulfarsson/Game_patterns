@@ -1805,14 +1805,6 @@ Magn\'us M\'ar Halld\'orsson, Hjalti Magn\'usson, Joshua Sack, and Einar Steingr
 discussions during the early stages of this work.  We further thank Magn\'us M\'ar Halld\'orsson
 for helpful discussions relating to the computational testing of our conjectures.
 
-Large language models were used in this work, more precisely ChatGPT-5.4 and Claude Opus 4.6.
-They were used for finding examples, writing code, and shortening and tightening proofs,
-which in some cases led to better arguments.  On the whole, we can recommend the use of
-an AI partner in mathematics research, provided that one maintains tight control: these systems can
-disappear into rabbit holes, start expensive computations and then forget about them, and produce
-arguments that require careful untangling to eliminate circular reasoning. All errors are still
-the sole responsibility of the human author.
-
 \appendix
 
 \section{Computational reproducibility}\label{sec:repro}
@@ -1881,6 +1873,28 @@ full_space_separable_pairs=59 total_nonmonotone_pairs=59
 \end{verbatim}
 and also lists the corresponding targets and confirms that no reverse pair is
 inseparable in $\Sym_8$.
+
+\section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
+
+During the preparation of this work the author used Claude Code (Anthropic's
+Claude Opus 4.6) and Codex (OpenAI's GPT-5.4) to assist with: writing and
+editing C++ and Python code for the computational experiments, including the
+exact monotone-forcing threshold computations for $k = 3, 4, 5, 6$; revising
+prose in the abstract, introduction, and expository portions of the proofs;
+verifying mathematical arguments in the role of a critical referee; producing
+TikZ figures; and conducting literature searches. Code reused from the Permuta
+library predates these tools.
+
+During the verification process these tools often made mistakes, sometimes
+subtle ones, but they also suggested alternate approaches that led to
+improvements in the manuscript. On the whole, the author can recommend the
+use of an AI partner in mathematics research, provided that one maintains
+tight control: these systems can disappear into rabbit holes, start expensive
+computations and then forget about them, and produce arguments that require
+careful untangling to eliminate circular reasoning.
+
+After using these tools, the author reviewed and edited the content as needed
+and takes full responsibility for the content of the published article.
 
 \bibliographystyle{amsplain}
 \bibliography{references}
