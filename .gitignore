@@ -97,3 +97,6 @@ __pycache__/
 /test_k5_directed_reply_exactness
 /test_k5_monotone_template_directed_exactness
 /verify_k5_creator_case
+
+# Submission packages (cover letters name the venue): kept locally, never committed
+submissions/
